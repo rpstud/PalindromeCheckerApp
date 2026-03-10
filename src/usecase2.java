@@ -1,0 +1,2 @@
+public class usecase2 {
+}
