@@ -1,15 +1,23 @@
-////TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-//// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-//public class Main {
-//    public static void main(String[] args) {
-//        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-//        // to see how IntelliJ IDEA suggests fixing it.
-//        System.out.printf("Hello and welcome!");
-//
-//        for (int i = 1; i <= 5; i++) {
-//            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-//            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-//            System.out.println("i = " + i);
-//        }
-//    }
-//}
+public class Main {
+    public static void main(String[] args) {
+
+        // Input string
+        String input = "madam";
+
+        // Variable to store reversed string
+        String reversed = "";
+
+        // Reverse the string using a loop
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
+        }
+
+        // Compare original and reversed string
+        boolean isPalindrome = input.equals(reversed);
+
+        // Display result
+        System.out.println("Input text: " + input);
+        System.out.println("Reversed text: " + reversed);
+        System.out.println("Is it a Palindrome? : " + isPalindrome);
+    }
+}
