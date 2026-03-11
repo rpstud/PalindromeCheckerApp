@@ -1,15 +1,67 @@
-////TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-//// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-//public class Main {
-//    public static void main(String[] args) {
-//        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-//        // to see how IntelliJ IDEA suggests fixing it.
-//        System.out.printf("Hello and welcome!");
-//
-//        for (int i = 1; i <= 5; i++) {
-//            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-//            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-//            System.out.println("i = " + i);
-//        }
-//    }
-//}
+class Node {
+    char data;
+    Node next;
+
+    Node(char data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String input = "madam";
+
+        Node head = null;
+        Node tail = null;
+
+        for (int i = 0; i < input.length(); i++) {
+            Node newNode = new Node(input.charAt(i));
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
+            }
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        Node prev = null;
+        Node current = slow;
+        Node next;
+
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        Node firstHalf = head;
+        Node secondHalf = prev;
+
+        boolean isPalindrome = true;
+
+        while (secondHalf != null) {
+            if (firstHalf.data != secondHalf.data) {
+                isPalindrome = false;
+                break;
+            }
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
+        }
+
+        System.out.println("Input text: " + input);
+        System.out.println("Is it a Palindrome? : " + isPalindrome);
+    }
+}
